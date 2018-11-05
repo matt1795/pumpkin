@@ -17,7 +17,6 @@ class FIR : public SISO<T> {
 	std::vector<T> x;					// input values
 	std::vector<T> h;					// weights (also impulse response)
 	T y;								// holds last output value
-	const T den;						// used for integer values
 	unsigned int offset;				// current offset
 
 	// calculate current output
@@ -25,7 +24,7 @@ class FIR : public SISO<T> {
 
 public:
 	// ctor
-	FIR(const std::vector<T> &weights, T denominator=1);
+	FIR(const std::vector<T> &weights);
 
 	// add new input value
 	void in(const T &val) override;

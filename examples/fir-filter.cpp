@@ -10,10 +10,20 @@
 
 #include "fir.hpp"
 
+#include <iostream>
 #include <limits>
 #include <vector>
 
 int main(int argc, char *argv[]) {
 	std::vector<int> weights(4, 1);
 	FIR<int> filter(weights);
+
+	for (int i = 0; i < 10; i++) {
+		if (i == 0)
+			filter.in(1);
+		else
+			filter.in(0);
+
+		std::cout << filter.out() << std::endl;
+	}
 }

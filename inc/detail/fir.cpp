@@ -12,9 +12,8 @@
 
 // ctor
 template <typename T>
-FIR<T>::FIR(const std::vector<T> &weights, T denominator) 
+FIR<T>::FIR(const std::vector<T> &weights) 
 	: h(weights)
-	, den(denominator)
 	, x(2*weights.size(), 0)
 	, y(0) 
 {}
@@ -26,7 +25,7 @@ T FIR<T>::calculate() {
 	for (int i = 0; i < h.size(); i++)
 		val += x[i + offset]*h[i];
 	
-	return val / den;
+	return val;
 }
 
 // add new input value
