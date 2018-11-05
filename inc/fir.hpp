@@ -16,19 +16,22 @@ template <typename T>
 class FIR : public SISO<T> {
 	std::vector<T> x;					// input values
 	std::vector<T> h;					// weights (also impulse response)
-	T out;								// holds last output value
-	int offset;						// current offset
+	T y;								// holds last output value
+	T den;								// used for integer values
+	int offset;							// current offset
 
 	// calculate current output
 	T calculate();
 
 public:
 	// ctor
-	FIR(std::vector<T> const &weights);
+	FIR(std::vector<T> const &weights, T denominator=1);
 
 	// add new input value
-	virtual void in(T const &val);
+	void in(T const &val) override;
 
 	// get last output value
-	virtual T out();
+	T out() override;
 };
+
+#include "detail/fir.cpp"

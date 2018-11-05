@@ -12,8 +12,12 @@
 
 // ctor
 template <typename T>
-FIR<T>::FIR(std::vector<T> const &weights) 
-	: out(0), h(weights), x(2*h.size(), 0) {}
+FIR<T>::FIR(std::vector<T> const &weights, T denominator) 
+	: y(0)
+	, h(weights)
+	, x(2*h.size(), 0)
+	, den(denominator)
+{}
 
 // calculate next output value
 template <typename T>
@@ -22,7 +26,7 @@ T FIR<T>::calculate() {
 	for (int i = 0; i < h.size(); i++)
 		val += x[i + offset]*h[i];
 	
-	return val;
+	return val / den;
 }
 
 // add new input value
@@ -37,11 +41,11 @@ void FIR<T>::in(T const &val) {
 	x[offset + h.size()] = val;
 
 	// calculate new ouput
-	out = calculate();
+	y = calculate();
 }
 
 // get last output value
 template <typename T>
 T FIR<T>::out() {
-	return out;
+	return y;
 }
