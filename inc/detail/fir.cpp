@@ -12,11 +12,11 @@
 
 // ctor
 template <typename T>
-FIR<T>::FIR(std::vector<T> const &weights, T denominator) 
-	: y(0)
-	, h(weights)
-	, x(2*h.size(), 0)
+FIR<T>::FIR(const std::vector<T> &weights, T denominator) 
+	: h(weights)
 	, den(denominator)
+	, x(2*weights.size(), 0)
+	, y(0) 
 {}
 
 // calculate next output value
@@ -31,7 +31,7 @@ T FIR<T>::calculate() {
 
 // add new input value
 template <typename T>
-void FIR<T>::in(T const &val) {
+void FIR<T>::in(const T &val) {
 	// increment offset and check if is in bounds
 	if (++offset >= h.size())
 		offset = 0;
