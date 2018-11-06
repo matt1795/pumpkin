@@ -45,6 +45,6 @@ void FIR<Input, Output, Acc>::in(const Input &val) {
 
 // get last output value
 template <class Input, class Output, class Acc>
-Output FIR<T>::out() {
+Output FIR<Input, Output, Acc>::out() {
 	return y;
 }
