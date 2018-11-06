@@ -29,6 +29,6 @@ void SISO<Input, Output>::stream(std::istream &is, std::ostream &os) {
 
 		// run through system
 		in(x);
-		os << out();
+		os << out() << std::endl;
 	}
 }
