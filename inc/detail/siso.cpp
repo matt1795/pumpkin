@@ -1,7 +1,7 @@
 // Single Input / Single Output System Class
 //
 // Author: Matthew Knight
-// File Name: siso.hpp
+// File Name: siso.cpp
 // Date: 2018-11-04
 //
 // This is an abstract class for all the different system types. It is templated
@@ -15,22 +15,20 @@
 // Later on we can play with the use of streams to provide input and output
 // channels to a system.
 
-#pragma once
+#include "siso.hpp"
 
 #include <iostream>
-#include <memory>
 
-template <class Input, class Output=Input>
-class SISO {
-public:
-	// add new input value
-	virtual void in(Input const &val) = 0;
+// set output stream 
+template <class Input, class Output>
+void SISO<Input, Output>::stream(std::istream &is, std::ostream &os) {
+	while (!is.eof()) {
+		// extract next input
+		Input x;
+		is >> x;
 
-	// get last output value
-	virtual Output out() = 0;
-
-	// filter from an input stream to an output stream 
-	void stream(std::istream &is, std::ostream &os);
-};
-
-#include "detail/siso.cpp"
+		// run through system
+		in(x);
+		os << out();
+	}
+}

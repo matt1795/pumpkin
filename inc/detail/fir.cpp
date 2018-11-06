@@ -11,17 +11,17 @@
 #include <vector>
 
 // ctor
-template <typename T>
-FIR<T>::FIR(const std::vector<T> &weights) 
+template <class Input, class Output, class Acc>
+FIR<Input, Output, Acc>::FIR(const std::vector<Input> &weights) 
 	: h(weights)
 	, x(2*weights.size(), 0)
 	, y(0) 
 {}
 
 // calculate next output value
-template <typename T>
-T FIR<T>::calculate() {
-	T val = 0;
+template <class Input, class Output, class Acc>
+Output FIR<Input, Output, Acc>::calculate() {
+	Acc val = 0;
 	for (int i = 0; i < h.size(); i++)
 		val += x[i + offset]*h[i];
 	
@@ -29,8 +29,8 @@ T FIR<T>::calculate() {
 }
 
 // add new input value
-template <typename T>
-void FIR<T>::in(const T &val) {
+template <class Input, class Output, class Acc>
+void FIR<Input, Output, Acc>::in(const Input &val) {
 	// increment offset and check if is in bounds
 	if (++offset >= h.size())
 		offset = 0;
@@ -44,7 +44,7 @@ void FIR<T>::in(const T &val) {
 }
 
 // get last output value
-template <typename T>
-T FIR<T>::out() {
+template <class Input, class Output, class Acc>
+Output FIR<T>::out() {
 	return y;
 }
