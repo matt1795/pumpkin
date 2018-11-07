@@ -1,0 +1,38 @@
+digraph {
+	// System Composition
+	Cascade -> SISO
+	Feedback -> SISO
+	
+	// Noise
+	Noise -> SISO
+	AWGN -> Noise
+	PinkNoise -> Noise
+	BurstNoise -> Noise
+	SaltAndPepperNoise -> Noise
+
+	// Digital Filters
+	IIR -> SISO
+	FIR -> IIR
+
+	// Non-linear Filters/Systems
+	Median -> SISO
+	PLL -> SISO
+	Polynomial -> SISO
+	Sinusoid -> SISO
+	Logarithmic -> SISO
+
+	// Simulation
+	SimulatedSystem -> IIR
+	FirstOrder -> SimulatedSystem
+	SecondOrder -> SimulatedSystem
+	Pendulum -> SimulatedSystem
+
+	// ???
+	CrossCorrelation
+	DFT
+	FFT
+	DCT
+	Wavelet
+	
+	// Adaptive Filters
+}
