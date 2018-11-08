@@ -23,8 +23,10 @@
 template <class Input, class Output=Input>
 class SISO {
 public:
+	using Ptr = std::shared_ptr<SISO<Input, Output>>;
+
 	// add new input value
-	virtual void in(Input const &val) = 0;
+	virtual void in(const Input& val) = 0;
 
 	// get last output value
 	virtual Output out() = 0;

@@ -16,18 +16,14 @@
 
 // vector ctor
 template <class T>
-Cascade<T>::Cascade(std::vector<SISO<T, T> *> systems) : systems(systems) {}
+Cascade<T>::Cascade(std::vector<SISO<T, T>::Ptr> systems) : systems(systems) {}
 
 // add new input value
 template <class T>
 void Cascade<T>::in(T const &val) {
-	for (int i = 0; i < systems.size(); i++) {
-		// put input into first, else grab from last
-		if (i == 0)
-			systems[i]->in(val);
-		else
-			systems[i]->in(systems[i-1]->out());
-	}
+	systems.front()->in(val);
+	for (int i = 1; i < systems.size(); i++)
+		systems[i]->in(systems[i-1]->out());
 }
 
 // get last output value

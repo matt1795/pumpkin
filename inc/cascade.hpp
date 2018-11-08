@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include "siso.hpp"
+
 #include <vector>
 
 #include <cstdarg>
@@ -17,11 +19,11 @@
 template <class T>
 class Cascade : public SISO<T, T> {
 	// cascaded systems
-	std::vector<SISO<T, T> *> systems;
+	std::vector<SISO<T, T>::Ptr> systems;
 
 public:
 	// vector ctor
-	Cascade(std::vector<SISO<T, T> *> systems);
+	Cascade(std::vector<SISO<T, T>::Ptr> systems);
 
 	// add new input value
 	void in(T const &val) override;
