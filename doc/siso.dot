@@ -1,8 +1,12 @@
 digraph {
 	// System Composition
 	Cascade -> SISO
+	Parallel -> SISO
 	Feedback -> SISO
-	
+	Integrator -> SISO
+	Derivator -> SISO
+	Mixer -> SISO
+
 	// Noise
 	Noise -> SISO
 	AWGN -> Noise
@@ -13,6 +17,15 @@ digraph {
 	// Digital Filters
 	IIR -> SISO
 	FIR -> IIR
+	
+	// Normal Filters
+	Gaussian -> FIR
+	Butterworth -> IIR
+	Chebyshev -> IIR
+	Bessel -> IIR
+	Butterwoth -> IIR
+	Comb -> IIR
+	Notch -> IIR
 
 	// Non-linear Filters/Systems
 	Median -> SISO
@@ -20,6 +33,9 @@ digraph {
 	Polynomial -> SISO
 	Sinusoid -> SISO
 	Logarithmic -> SISO
+	Saturation -> SISO
+	SmoothSaturation -> Saturation
+	Hysteresis -> SISO
 
 	// Simulation
 	SimulatedSystem -> IIR
@@ -35,4 +51,18 @@ digraph {
 	Wavelet
 	
 	// Adaptive Filters
+	
+	// Sources
+	Source -> "std::istream"
+	NoiseSource -> Source
+	Impulse -> Source
+	Step -> Source
+	Ramp -> Source
+	Triangle -> Source
+	Sine -> Source
+	Digital -> Source
+	UnipolarNRZ -> Digital
+	PolarNRZ -> Digital
+	Manchester -> Digital
+	Bipolar -> Digital
 }
