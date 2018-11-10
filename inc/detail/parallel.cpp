@@ -10,9 +10,11 @@
 
 #include "parallel.hpp"
 
+#include <vector>
+
 // ctor
 template <class T>
-Parallel<T>::Parallel(const std::vector<SISO<T>*>& systems)
+Parallel<T>::Parallel(const std::vector<typename SISO<T>::Ptr>& systems)
 	: systems(systems) {}
 
 // input new value

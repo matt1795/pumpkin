@@ -23,6 +23,8 @@
 template <class Input, class Output=Input>
 class SISO {
 public:
+	using Ptr = std::shared_ptr<SISO<Input, Output>>;
+	
 	// add new input value
 	virtual void in(Input const &val) = 0;
 
@@ -32,5 +34,8 @@ public:
 	// filter from an input stream to an output stream 
 	void stream(std::istream &is, std::ostream &os);
 };
+
+// type aliases
+using SimulatedSystem = SISO<double>;
 
 #include "detail/siso.cpp"

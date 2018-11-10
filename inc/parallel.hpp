@@ -12,13 +12,15 @@
 
 #include "siso.hpp"
 
+#include <vector>
+
 template <class T>
 class Parallel : public SISO<T> {
-	std::vector<SISO<T>*> systems;
+	std::vector<typename SISO<T>::Ptr> systems;
 
 public:
 	// ctor
-	Parallel(const std::vector<SISO<T>*>& systems);
+	Parallel(const std::vector<typename SISO<T>::Ptr>& systems);
 
 	// input new value
 	void in(const T& in) override;

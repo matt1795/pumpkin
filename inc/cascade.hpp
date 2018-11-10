@@ -19,11 +19,11 @@
 template <class T>
 class Cascade : public SISO<T> {
 	// cascaded systems
-	std::vector<SISO<T>*> systems;
+	std::vector<typename SISO<T>::Ptr> systems;
 
 public:
 	// vector ctor
-	Cascade(std::vector<SISO<T>*> systems);
+	Cascade(const std::vector<typename SISO<T>::Ptr>& systems);
 
 	// add new input value
 	void in(T const& val) override;
