@@ -3,8 +3,6 @@ digraph {
 	Cascade -> SISO
 	Parallel -> SISO
 	Feedback -> SISO
-	Integrator -> SISO
-	Derivator -> SISO
 	Mixer -> SISO
 
 	// Noise
@@ -16,7 +14,7 @@ digraph {
 
 	// Digital Filters
 	IIR -> SISO
-	FIR -> IIR
+	FIR -> SISO
 	
 	// Normal Filters
 	Gaussian -> FIR
@@ -30,19 +28,21 @@ digraph {
 	// Non-linear Filters/Systems
 	Median -> SISO
 	PLL -> SISO
-	Polynomial -> SISO
-	Sinusoid -> SISO
-	Logarithmic -> SISO
 	Saturation -> SISO
-	SmoothSaturation -> Saturation
-	Hysteresis -> SISO
 
 	// Simulation
-	SimulatedSystem -> IIR
+	SimulatedSystem -> SISO
 	FirstOrder -> SimulatedSystem
 	SecondOrder -> SimulatedSystem
-	Pendulum -> SimulatedSystem
+	Polynomial -> SimulatedSystem
+	Sinusoid -> SimulatedSystem
+	Logarithmic -> SimulatedSystem
 
+	SmoothSaturation -> Saturation
+	SmoothSaturation -> SimulatedSystem
+	Hysteresis -> SimulatedSystem
+	Pendulum -> SimulatedSystem
+ 
 	// ???
 	CrossCorrelation
 	DFT
@@ -53,7 +53,7 @@ digraph {
 	// Adaptive Filters
 	
 	// Sources
-	Source -> "std::istream"
+	Source -> "std::basic_istream"
 	NoiseSource -> Source
 	Impulse -> Source
 	Step -> Source
