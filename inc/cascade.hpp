@@ -10,22 +10,26 @@
 
 #pragma once
 
+#include "siso.hpp"
+
 #include <vector>
 
 #include <cstdarg>
 
 template <class T>
-class Cascade : public SISO<T, T> {
+class Cascade : public SISO<T> {
 	// cascaded systems
-	std::vector<SISO<T, T> *> systems;
+	std::vector<SISO<T>*> systems;
 
 public:
 	// vector ctor
-	Cascade(std::vector<SISO<T, T> *> systems);
+	Cascade(std::vector<SISO<T>*> systems);
 
 	// add new input value
-	void in(T const &val) override;
+	void in(T const& val) override;
 
 	// get last output value
 	T out() override;	
 };
+
+#include "detail/cascade.cpp"

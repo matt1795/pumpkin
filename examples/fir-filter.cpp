@@ -8,15 +8,20 @@
 // and applies the filter on values coming in through stdin, and outputs them to
 // stdout.
 
+#include "cascade.hpp"
 #include "fir.hpp"
+#include "parallel.hpp"
 
 #include <iostream>
 #include <limits>
 #include <vector>
 
 int main(int argc, char *argv[]) {
-	std::vector<int> weights(4, 1);
-	FIR<int> filter(weights);
-	
-	filter.stream(std::cin, std::cout);
+	auto filter1 = new FIR<int>({ 1, 2, 3, 4 });
+	auto filter2 = new FIR<int>({ 1, 2, 3, 4 });
+	auto filter3 = new FIR<int>({ 1, 2, 3, 4 });
+	std::vector<SISO<int>*> systems { filter1, filter2 };
+	Parallel<int> parallel({ filter1, filter2 });
+	Cascade<int> cascade({ filter3, &parallel });
+	cascade.stream(std::cin, std::cout);
 }

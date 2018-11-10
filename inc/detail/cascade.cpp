@@ -10,13 +10,15 @@
 
 #include "cascade.hpp"
 
+#include "siso.hpp"
+
 #include <vector>
 
 #include <cstdarg>
 
 // vector ctor
 template <class T>
-Cascade<T>::Cascade(std::vector<SISO<T, T> *> systems) : systems(systems) {}
+Cascade<T>::Cascade(std::vector<SISO<T>*> systems) : systems(systems) {}
 
 // add new input value
 template <class T>
