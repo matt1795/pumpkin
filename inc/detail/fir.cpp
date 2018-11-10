@@ -32,8 +32,10 @@ Output FIR<Input, Output, Acc>::calculate() {
 template <class Input, class Output, class Acc>
 void FIR<Input, Output, Acc>::in(const Input &val) {
 	// increment offset and check if is in bounds
-	if (++offset >= h.size())
-		offset = 0;
+	if (offset == 0)
+		offset = h.size() - 1;
+	else
+		offset--;
 
 	// add value to buffer
 	x[offset] = val;

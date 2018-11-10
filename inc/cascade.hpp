@@ -17,17 +17,19 @@
 #include <cstdarg>
 
 template <class T>
-class Cascade : public SISO<T, T> {
+class Cascade : public SISO<T> {
 	// cascaded systems
-	std::vector<SISO<T, T>::Ptr> systems;
+	std::vector<typename SISO<T>::Ptr> systems;
 
 public:
 	// vector ctor
-	Cascade(std::vector<SISO<T, T>::Ptr> systems);
+	Cascade(const std::vector<typename SISO<T>::Ptr>& systems);
 
 	// add new input value
-	void in(T const &val) override;
+	void in(T const& val) override;
 
 	// get last output value
 	T out() override;	
 };
+
+#include "detail/cascade.cpp"

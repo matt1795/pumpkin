@@ -15,15 +15,15 @@
 #include <vector>
 
 template <class T>
-class Parallel : public SISO<T, T> {
-	std::vector<SISO<T, T>::Ptr> systems;
+class Parallel : public SISO<T> {
+	std::vector<typename SISO<T>::Ptr> systems;
 
 public:
 	// ctor
-	Parallel(const std::vector<SISO<T, T>::Ptr>& systems);
-	
+	Parallel(const std::vector<typename SISO<T>::Ptr>& systems);
+
 	// input new value
-	void in(const T& val) override;
+	void in(const T& in) override;
 
 	// get output value
 	T out() override;
