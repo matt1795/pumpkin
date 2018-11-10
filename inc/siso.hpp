@@ -35,7 +35,4 @@ public:
 	void stream(std::istream &is, std::ostream &os);
 };
 
-// type aliases
-using SimulatedSystem = SISO<double>;
-
 #include "detail/siso.cpp"

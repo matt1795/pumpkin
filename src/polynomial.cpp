@@ -20,6 +20,7 @@ Polynomial::Polynomial(const std::vector<double>& weights) : weights(weights)
 void Polynomial::in(const double& val) {
 	double x = 1;
 	y = 0;
+	
 	for (auto w : weights) {
 		y += w*x;
 		x *= val;

@@ -26,5 +26,3 @@ public:
 	// get output value
 	double out() override;
 };
-
-#include "detail/polynomial.cpp"
