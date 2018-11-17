@@ -9,6 +9,7 @@
 #pragma once
 
 #include "siso.hpp"
+#include "simulated-system.hpp"
 
 #include <vector>
 

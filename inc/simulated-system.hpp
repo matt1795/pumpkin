@@ -9,7 +9,6 @@
 #pragma once
 
 #include "siso.hpp"
-#include "sampled-system.hpp"
 
 class SimulatedSystem : public SISO<double> {
 protected:
