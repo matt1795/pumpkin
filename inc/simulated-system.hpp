@@ -12,7 +12,7 @@
 
 class SimulatedSystem : public SISO<double> {
 protected:
-	double period;
+	double period = 0.001; // milliseconds
 
 public:
 	// period setter
