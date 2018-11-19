@@ -15,6 +15,10 @@ protected:
 	double period = 0.001; // milliseconds
 
 public:
+	// ctors
+	SimulatedSystem() = default;
+	SimulatedSystem(double period);
+
 	// period setter
 	virtual void setPeriod(double newPeriod);
 

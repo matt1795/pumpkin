@@ -1,6 +1,9 @@
 cmake_minimum_required (VERSION 2.6)
 project (pumpkin CXX)
 
+# compiler to use
+set (CMAKE_CXX_COMPILER g++)
+
 # version number
 set (PUMPKIN_VERSION_MAJOR 0)
 set (PUMPKIN_VERSION_MINOR 1)
@@ -12,5 +15,7 @@ set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib")
 
 include_directories ("${PROJECT_SOURCE_DIR}/inc")
 
-# compile example programs
+file (GLOB LIB_SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
+add_library(pumpkin ${LIB_SOURCES})
+
 add_subdirectory(examples)
