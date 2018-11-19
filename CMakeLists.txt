@@ -1,9 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 project (pumpkin CXX)
 
-# compiler to use
-set (CMAKE_CXX_COMPILER g++)
-
 # version number
 set (PUMPKIN_VERSION_MAJOR 0)
 set (PUMPKIN_VERSION_MINOR 1)
