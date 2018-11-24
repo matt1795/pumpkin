@@ -1,8 +1,4 @@
 language: cpp
-os:
-  - linux
-  - osx
-  - windows
 addons:
   apt:
     packages:
@@ -16,5 +12,8 @@ script:
 matrix:
   include:
     - os: linux
+      compiler:
+        - gcc
+        - clang
     - os: osx
     - os: windows
