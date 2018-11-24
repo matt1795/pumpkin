@@ -3,6 +3,9 @@ os:
   - linux
   - osx
   - windows
+compiler:
+  - gcc
+  - clang  
 addons:
   apt:
     packages:
