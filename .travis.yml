@@ -1,7 +1,8 @@
 language: cpp
-compiler:
-    - gcc
-    - clang
+os:
+  - linux
+  - osx
+  - windows
 addons:
   apt:
     packages:
