@@ -3,16 +3,18 @@ os:
   - linux
   - osx
   - windows
-compiler:
-  - gcc
-  - clang  
 addons:
   apt:
     packages:
       - cmake-data
       - cmake
 script:
-    - mkdir build
-    - cd build
-    - cmake ..
-    - cmake --build .
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build .
+matrix:
+  include:
+    - os: linux
+    - os: osx
+    - os: windows
