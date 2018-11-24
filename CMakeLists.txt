@@ -12,5 +12,7 @@ set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib")
 
 include_directories ("${PROJECT_SOURCE_DIR}/inc")
 
-# compile example programs
+file (GLOB LIB_SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
+add_library(pumpkin ${LIB_SOURCES})
+
 add_subdirectory(examples)

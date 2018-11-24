@@ -6,21 +6,19 @@
 //
 // This class implements a simple polynomial equation.
 
-#pragma once
-
-#include "siso.hpp"
+#include "polynomial.hpp"
 
 #include <vector>
 
 // ctor
-Polynomial::Polynomial(const std::vector<double>& weights) : weights(weights) 
+Polynomial::Polynomial(const std::vector<double>& weights) : weights(weights)
 {}
 
 // input new value
 void Polynomial::in(const double& val) {
 	double x = 1;
 	y = 0;
-	
+
 	for (auto w : weights) {
 		y += w*x;
 		x *= val;

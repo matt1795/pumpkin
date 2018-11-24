@@ -8,6 +8,9 @@
 
 #include "simulated-system.hpp"
 
+// ctor -- sets period
+SimulatedSystem::SimulatedSystem(double period) : period(period) {}
+
 // period setter
 void SimulatedSystem::setPeriod(double newPeriod) {
 	period = newPeriod;
