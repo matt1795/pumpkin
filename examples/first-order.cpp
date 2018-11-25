@@ -12,11 +12,11 @@
 #include <iostream>
 
 int main() {
-	FirstOrder sys(0.01);
+	FirstOrder sys(1);
 
 	// step input
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 1001; i++) {
 		sys.in(1);
-		std::cout << sys.out() << std::endl;
 	}
+	std::cout << sys.out() << std::endl;
 }

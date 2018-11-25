@@ -17,22 +17,17 @@ FirstOrder::FirstOrder(double tau, double gain, double period)
 	: tau(tau)
 	, gain(gain)
 	, SimulatedSystem(period)
+	, x(period)
+	, y(period)
 {}
 
 // add new input value
 void FirstOrder::in(double val) {
-	x[1] = x[0];
-	x[0] = val;
-	y[1] = y[0];
-	y[0] = ((gain * integrate(x, xAcc)) - integrate(y, yAcc)) / tau;
+	x.in(val);
+	y.in(((gain * x[1]) - y[1]) / tau);
 }
 
 // get last output val
 double FirstOrder::out() {
 	return y[0];
-}
-
-double FirstOrder::integrate(const std::array<double, 2>& arr, double& acc) {
-	acc += (period / 2) * (arr[0] + arr[1]);
-	return acc;
 }

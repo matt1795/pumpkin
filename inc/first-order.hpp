@@ -8,20 +8,17 @@
 
 #pragma once
 
+#include "integral.hpp"
 #include "simulated-system.hpp"
 
 #include <array>
+
 class FirstOrder : public SimulatedSystem {
 	double gain = 1;
 	double tau = 1;
 
 	// Integral accumulators
-	double xAcc = 0;
-	double yAcc = 0;
-
-	// buffers
-	std::array<double, 2> y = {{ 0, 0 }};
-	std::array<double, 2> x = {{ 0, 0 }};
+	Integral<double, 1> x, y;
 
 public:
 	// ctors
@@ -35,7 +32,4 @@ public:
 
 	// get last output val
 	double out() override;
-
-private:
-	double integrate(const std::array<double, 2>& arr, double& acc);
 };

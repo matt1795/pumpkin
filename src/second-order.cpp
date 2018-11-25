@@ -25,25 +25,19 @@ SecondOrder::SecondOrder(double zeta, double omega, double gain, double period)
 	, omega(omega)
 	, gain(gain)
 	, SimulatedSystem(period)
+	, x(period)
+	, y(period)
 {}
 
 // insert new input
 void SecondOrder::in(double val) {
-	// shift buffer
-	y[2] = y[1];
-	y[1] = y[0];
-
-	// calculate new output
-	double a = omega * omega;
-	double b = 2 * zeta * omega;
-
-	double c = (a * (period * period)) + (b * period) + 1;
-
-	double j = gain * a * period * period / c;
-	double k = ((b * period) - 2) / c;
-	double l = 1 / c;
-
-	y[0] = (j * val) - (k * y[1]) - (l * y[2]);
+	double omegaSquared = omega * omega;
+	x.in(val);
+	y.in(
+		(gain * omegaSquared * x[2])
+		- (2 * zeta * omega * y[1])
+		- (omegaSquared * y[2])
+	);
 }
 
 // get new output

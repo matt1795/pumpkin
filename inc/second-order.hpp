@@ -8,7 +8,10 @@
 
 #pragma once
 
+#include "integral.hpp"
 #include "simulated-system.hpp"
+
+#include <array>
 
 class SecondOrder : public SimulatedSystem {
 	// system characteristics
@@ -16,8 +19,7 @@ class SecondOrder : public SimulatedSystem {
 	double zeta = 1;
 	double omega = 1;
 
-	// output buffer
-	double y[3] = { 0, 0, 0 };
+	Integral<double, 2> x, y;
 
 public:
 	// ctors

@@ -1,2 +1,5 @@
 add_executable (fir-filter fir-filter.cpp)
+add_executable (integral integral.cpp)
 add_executable (first-order first-order.cpp)
+add_executable (second-order second-order.cpp)
+
