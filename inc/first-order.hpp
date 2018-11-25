@@ -20,8 +20,8 @@ class FirstOrder : public SimulatedSystem {
 	double yAcc = 0;
 
 	// buffers
-	std::array<double, 2> y = { 0, 0 };
-	std::array<double, 2> x = { 0, 0 };
+	std::array<double, 2> y = { 0 };
+	std::array<double, 2> x = { 0 };
 
 public:
 	// ctors
