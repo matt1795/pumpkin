@@ -27,7 +27,7 @@ public:
 	SecondOrder(double zeta, double omega, double gain, double period);
 
 	// insert new input
-	void in(const double& in) override;
+	void in(double val) override;
 
 	// get new output
 	double out() override;

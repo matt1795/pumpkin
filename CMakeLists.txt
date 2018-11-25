@@ -15,4 +15,6 @@ include_directories ("${PROJECT_SOURCE_DIR}/inc")
 file (GLOB LIB_SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_library(pumpkin ${LIB_SOURCES})
 
+set (CMAKE_CXX_STANDARD_LIBRARIES
+	"${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/libpumpkin.a")
 add_subdirectory(examples)

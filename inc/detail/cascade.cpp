@@ -18,13 +18,13 @@
 
 // vector ctor
 template <class T>
-Cascade<T>::Cascade(const std::vector<typename SISO<T>::Ptr>& systems) 
-	: systems(systems) 
+Cascade<T>::Cascade(const std::vector<typename SISO<T>::Ptr>& systems)
+	: systems(systems)
 {}
 
 // add new input value
 template <class T>
-void Cascade<T>::in(T const &val) {
+void Cascade<T>::in(T val) {
 	systems.front()->in(val);
 	for (int i = 1; i < systems.size(); i++)
 		systems[i]->in(systems[i-1]->out());

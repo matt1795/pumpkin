@@ -26,10 +26,10 @@ public:
 	Cascade(const std::vector<typename SISO<T>::Ptr>& systems);
 
 	// add new input value
-	void in(T const& val) override;
+	void in(T val) override;
 
 	// get last output value
-	T out() override;	
+	T out() override;
 };
 
 #include "detail/cascade.cpp"

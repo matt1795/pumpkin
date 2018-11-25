@@ -27,7 +27,7 @@ public:
 	FIR(const std::vector<Input> &weights);
 
 	// add new input value
-	void in(const Input &val) override;
+	void in(Input val) override;
 
 	// get last output value
 	Output out() override;

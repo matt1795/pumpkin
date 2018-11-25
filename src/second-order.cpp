@@ -28,7 +28,7 @@ SecondOrder::SecondOrder(double zeta, double omega, double gain, double period)
 {}
 
 // insert new input
-void SecondOrder::in(const double& val) {
+void SecondOrder::in(double val) {
 	// shift buffer
 	y[2] = y[1];
 	y[1] = y[0];

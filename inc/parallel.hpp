@@ -23,7 +23,7 @@ public:
 	Parallel(const std::vector<typename SISO<T>::Ptr>& systems);
 
 	// input new value
-	void in(const T& in) override;
+	void in(T val) override;
 
 	// get output value
 	T out() override;

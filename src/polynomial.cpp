@@ -15,7 +15,7 @@ Polynomial::Polynomial(const std::vector<double>& weights) : weights(weights)
 {}
 
 // input new value
-void Polynomial::in(const double& val) {
+void Polynomial::in(double val) {
 	double x = 1;
 	y = 0;
 

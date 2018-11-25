@@ -10,12 +10,18 @@
 
 #include "simulated-system.hpp"
 
+#include <array>
 class FirstOrder : public SimulatedSystem {
 	double gain = 1;
 	double tau = 1;
 
+	// Integral accumulators
+	double xAcc = 0;
+	double yAcc = 0;
+
 	// buffers
-	double y[2] = { 0, 0 };
+	std::array<double, 2> y = { 0, 0 };
+	std::array<double, 2> x = { 0, 0 };
 
 public:
 	// ctors
@@ -25,8 +31,11 @@ public:
 	FirstOrder(double tau, double gain, double period);
 
 	// add new input value
-	void in(const double& val) override;
+	void in(double val) override;
 
 	// get last output val
 	double out() override;
+
+private:
+	double integrate(const std::array<double, 2>& arr, double& acc);
 };

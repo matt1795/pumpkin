@@ -22,7 +22,7 @@ public:
 	Polynomial(const std::vector<double>& weights);
 
 	// input new value
-	void in(const double& val) override;
+	void in(double val) override;
 
 	// get output value
 	double out() override;

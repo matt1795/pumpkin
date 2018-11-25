@@ -26,7 +26,7 @@ public:
 	using Ptr = std::shared_ptr<SISO<Input, Output>>;
 
 	// add new input value
-	virtual void in(const Input& val) = 0;
+	virtual void in(Input val) = 0;
 
 	// get last output value
 	virtual Output out() = 0;

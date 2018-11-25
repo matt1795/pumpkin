@@ -12,10 +12,10 @@
 
 // ctor
 template <class Input, class Output, class Acc>
-FIR<Input, Output, Acc>::FIR(const std::vector<Input> &weights) 
+FIR<Input, Output, Acc>::FIR(const std::vector<Input> &weights)
 	: h(weights)
 	, x(2*weights.size(), 0)
-	, y(0) 
+	, y(0)
 {}
 
 // calculate next output value
@@ -24,13 +24,13 @@ Output FIR<Input, Output, Acc>::calculate() {
 	Acc val = 0;
 	for (int i = 0; i < h.size(); i++)
 		val += x[i + offset]*h[i];
-	
+
 	return val;
 }
 
 // add new input value
 template <class Input, class Output, class Acc>
-void FIR<Input, Output, Acc>::in(const Input &val) {
+void FIR<Input, Output, Acc>::in(Input val) {
 	// increment offset and check if is in bounds
 	if (offset == 0)
 		offset = h.size() - 1;

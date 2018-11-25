@@ -19,7 +19,7 @@ Parallel<T>::Parallel(const std::vector<typename SISO<T>::Ptr>& systems)
 
 // input new value
 template <class T>
-void Parallel<T>::in(const T& val) {
+void Parallel<T>::in(T val) {
 	for (auto system : systems)
 		system->in(val);
 }

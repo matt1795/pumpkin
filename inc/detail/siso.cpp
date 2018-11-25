@@ -19,7 +19,7 @@
 
 #include <iostream>
 
-// set output stream 
+// set output stream
 template <class Input, class Output>
 void SISO<Input, Output>::stream(std::istream &is, std::ostream &os) {
 	while (!is.eof()) {
