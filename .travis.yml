@@ -1,4 +1,8 @@
 language: cpp
+os:
+  - linux
+  - osx
+  - windows
 addons:
   apt:
     packages:
@@ -9,43 +13,3 @@ script:
   - cd build
   - cmake ..
   - cmake --build .
-matrix:
-  include:
-    - os: linux
-    
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-      env:
-        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-    
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-      env:
-        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-    
-        - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-    
-    - os: linux
-      compiler: clang
-
-    - os: osx
-
-    - os: windows
